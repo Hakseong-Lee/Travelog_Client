@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import PlaceInfoExtend from './PlaceInfoExtend.jsx';
 import { BiRestaurant } from 'react-icons/bi';
 import { ImSearch, ImLibrary } from 'react-icons/im';
 import { IoMdCafe } from 'react-icons/io';
@@ -11,12 +10,10 @@ import {
 	bookmarkbarState,
 	placeState,
 	mainInputValueState,
-	detailInfoState,
 	activeState,
 } from '../../recoil/Atom';
 
 function Sidebar() {
-	const detailInfo = useRecoilValue(detailInfoState);
 	const setPlace = useSetRecoilState(placeState);
 	const mainInputValue = useRecoilValue(mainInputValueState);
 	const [bmClose, setBmClose] = useRecoilState(bookmarkbarState);

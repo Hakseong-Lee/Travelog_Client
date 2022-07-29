@@ -106,7 +106,7 @@ function EditProfile() {
 
 	useEffect(() => {
 		axios
-			.get('http://localhost:8000/api/users/user', config)
+			.get('http://kdt-sw2-busan-team01.elicecoding.com:5000/api/users/user', config)
 			//.then(({ data }) => setUserData(data));
 			.then(({ data }) => {
 				setUserName(data.name);
@@ -141,7 +141,7 @@ function EditProfile() {
 		try {
 			await axios({
 				method: 'patch',
-				url: `http://localhost:8000/api/users/${userId}`,
+				url: `http://kdt-sw2-busan-team01.elicecoding.com:5000/api/users/${userId}`,
 				headers: { Authorization: `Bearer ${token}` },
 				data: {
 					name: resultData.userName,

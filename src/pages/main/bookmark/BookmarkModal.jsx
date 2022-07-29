@@ -1,6 +1,5 @@
 import React from 'react';
 import BookmarkInfo from './BookmarkInfo';
-import MessageBox from '../../../components/MessageBox';
 import { BsFillStarFill } from 'react-icons/bs';
 import { MdOutlineClose } from 'react-icons/md';
 import styled from 'styled-components';
@@ -8,24 +7,20 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { bookmarkState, addBookmarkState, showBmListState } from '../../../recoil/Atom';
 
 export default function BookmarkModal() {
-	const bookmark = useRecoilValue(bookmarkState);
 	const [addBookmark, setAddBookmark] = useRecoilState(addBookmarkState);
 	const setShowBmList = useSetRecoilState(showBmListState);
 
 	function handleMakeBookmark() {
-		bookmark !== [] ? (
-			setShowBmList(true)
-		) : (
-			<MessageBox message="북마크를 추가해주세요." top="50vh" left="50vw" />
-		);
+		setShowBmList(true);
 	}
 
 	return (
 		<BmModalStyle>
 			<div className="title">
 				<BsFillStarFill className="staricon" color="#ffb877" />
-				북마크
+				<p id="bookmarkTitle">북마크</p>
 			</div>
+
 			<div id="x" onClick={() => setAddBookmark(!addBookmark)}>
 				<MdOutlineClose color="#5f6caf" />
 			</div>
@@ -40,7 +35,7 @@ export default function BookmarkModal() {
 const BmModalStyle = styled.div`
 	position: absolute;
 	top: 1rem;
-	left: 83vw;
+	left: 80vw;
 	background-color: rgba(255, 255, 255, 0.8);
 	border-radius: 4px;
 	display: flex;
@@ -60,6 +55,9 @@ const BmModalStyle = styled.div`
 		background: #ccc;
 	}
 
+	#bookmarkTitle {
+		padding-top: 0.7rem;
+	}
 	.title {
 		display: flex;
 		justify-content: center;
@@ -68,6 +66,8 @@ const BmModalStyle = styled.div`
 
 	.staricon {
 		padding: 10px 5px 0 0;
+		position: absolute;
+		left: 30%;
 	}
 
 	#x {

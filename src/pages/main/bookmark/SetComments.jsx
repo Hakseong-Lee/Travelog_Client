@@ -1,6 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
-import { debounce } from 'lodash';
 import { BsPencilFill } from 'react-icons/bs';
 import { useRecoilState } from 'recoil';
 import { textState } from '../../../recoil/Atom';
@@ -20,15 +19,13 @@ function SetComments(props) {
 	function handleBtn() {
 		// input의 value 새로운 객체에 넣는 작업
 		setText({ ...text, [props.i]: value });
-		props.setComment(value);
-		console.log(props.comment);
 		inputRef.current.type = 'hidden';
 		buttonRef.current.style.display = 'none';
 	}
 
-	const handleChange = debounce(e => {
+	const handleChange = e => {
 		setValue(e.target.value);
-	}, 500);
+	};
 
 	return (
 		<SetCommentsStyle>
@@ -39,12 +36,15 @@ function SetComments(props) {
 					id={props.i}
 					onChange={handleChange}
 					ref={inputRef}
+					value={props.comment}
 					placeholder="메모를 등록해 주세요."
 				/>
 				<button onClick={handleBtn} ref={buttonRef}>
 					등록
 				</button>
-				<p className="viewMemo" ref={pRef}></p>
+				<p className="viewMemo" ref={pRef}>
+					{text[props.i]}
+				</p>
 			</div>
 		</SetCommentsStyle>
 	);
@@ -54,6 +54,7 @@ export default SetComments;
 
 const SetCommentsStyle = styled.div`
 	button {
+		float: right;
 		display: none;
 		color: white;
 		background-color: #5f6caf;
@@ -73,6 +74,8 @@ const SetCommentsStyle = styled.div`
 
 	.viewMemo {
 		width: 12rem;
+		background-color: transparent;
+		margin-top: 1rem;
 	}
 
 	.makeFlex {

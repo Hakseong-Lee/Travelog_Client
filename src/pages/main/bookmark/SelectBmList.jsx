@@ -12,7 +12,6 @@ function SelectBmList() {
 	function handleList() {
 		setBmClose(false);
 		setShowBmList(false);
-		console.log(currentList);
 	}
 
 	return (

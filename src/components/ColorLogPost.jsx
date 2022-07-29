@@ -5,7 +5,7 @@ import styled from 'styled-components';
 function ColorLogPost({ title, mainImg, tag, id }) {
 	const navigate = useNavigate();
 	const handleClick = () => {
-		navigate(`/views/${id}`);
+		navigate(`/view/${id}`);
 	};
 	return (
 		<PostContainer onClick={handleClick}>

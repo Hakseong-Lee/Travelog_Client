@@ -27,7 +27,7 @@ const SetModalBtnStyle = styled.div`
 		height: 2rem;
 		border: none;
 		position: absolute;
-		top: 50vh;
+		top: 45vh;
 		transform: scale(1.5);
 		background-color: #fafafa;
 		color: #5f6caf;

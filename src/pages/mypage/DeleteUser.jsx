@@ -108,19 +108,19 @@ function DeleteUser() {
 
 		try {
 			const userData = await axios
-				.get('http://localhost:8000/api/users/user', {
+				.get('http://kdt-sw2-busan-team01.elicecoding.com:5000/api/users/user', {
 					headers: { Authorization: `Bearer ${token}` },
 				})
 				.then(e => e.data);
-			console.log(typeof userData.password);
 			await axios({
 				method: 'delete',
-				url: `http://localhost:8000/api/users/${userData.id}`,
+				url: `http://kdt-sw2-busan-team01.elicecoding.com:5000/api/users/${userData.id}`,
 				headers: { Authorization: `Bearer ${token}` },
 				data: {
 					password,
 				},
 			});
+			localStorage.clear();
 			window.location.href = '/login';
 		} catch (err) {
 			console.error(err.stack);

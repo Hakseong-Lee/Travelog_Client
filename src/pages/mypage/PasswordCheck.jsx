@@ -72,7 +72,7 @@ function PasswordCheck() {
 		try {
 			const isPassword = await axios({
 				method: 'post',
-				url: `http://localhost:8000/api/users/user/check`,
+				url: `http://kdt-sw2-busan-team01.elicecoding.com:5000/api/users/user/check`,
 				headers: { Authorization: `Bearer ${token}` },
 				data: {
 					password,
@@ -102,7 +102,7 @@ function PasswordCheck() {
 						}}
 						placeholder="비밀번호를 입력해 주세요."
 					/>
-					<SignupButton onClick={handleSubmit}>변경</SignupButton>
+					<SignupButton onClick={handleSubmit}>확인</SignupButton>
 				</form>
 			</SignupContainer>
 		</SignupSection>

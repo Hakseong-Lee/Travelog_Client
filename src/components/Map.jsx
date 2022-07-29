@@ -11,7 +11,6 @@ function Map() {
 	const [place, setPlace] = useRecoilState(placeState);
 	const setPlaceInfo = useSetRecoilState(placeInfoState);
 	const setMainInputValue = useSetRecoilState(mainInputValueState);
-
 	const location = useLocation();
 
 	useEffect(() => {

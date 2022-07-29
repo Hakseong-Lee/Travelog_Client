@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import handleStyle from '../../function/handleStyle';
 import { TiArrowLeft } from 'react-icons/ti';
-import { useRecoilState } from 'recoil';
-import { activeState, detailInfoState } from '../../recoil/Atom';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { activeState, detailInfoState, placeInfoState } from '../../recoil/Atom';
 
 function PlaceInfoExtend() {
 	const [active, setActive] = useRecoilState(activeState);
@@ -32,7 +32,9 @@ function PlaceInfoExtend() {
 					</h2>
 					<p>{detailInfo.phone}</p>
 					<div className="placeUrl">
-						<a href={detailInfo.place_url}>카카오 지도에서 보기</a>
+						<a href={detailInfo.place_url} target="_blank">
+							카카오 지도에서 보기
+						</a>
 					</div>
 				</div>
 				<div className="travelog"></div>

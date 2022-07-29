@@ -5,7 +5,7 @@ import Extendbar from './Extendbar.jsx';
 import Bookmarkbar from './bookmark/Bookmarkbar.jsx';
 import Map from '../../components/Map.jsx';
 import SelectBmList from './bookmark/SelectBmList.jsx';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import {
 	bookmarkListState,
 	bookmarkSetState,
@@ -16,8 +16,8 @@ import {
 import PlaceInfoExtend from './PlaceInfoExtend.jsx';
 
 function Main() {
-	const [bookmarkSet, setBookmarkSet] = useRecoilState(bookmarkSetState);
-	const [bmList, setBmList] = useRecoilState(bookmarkListState);
+	const setBookmarkSet = useSetRecoilState(bookmarkSetState);
+	const setBmList = useSetRecoilState(bookmarkListState);
 	const setAllBookmark = useSetRecoilState(allBookmarkState);
 	const showBmList = useRecoilValue(showBmListState);
 	const detailInfo = useRecoilValue(detailInfoState);
@@ -33,7 +33,7 @@ function Main() {
 			const token = localStorage.getItem('token');
 			await axios({
 				method: 'get',
-				url: 'http://localhost:8000/api/bookmarks/folders',
+				url: 'http://kdt-sw2-busan-team01.elicecoding.com:5000/api/bookmarks/folders',
 				headers: {
 					Authorization: `Bearer ${token}`,
 				},
@@ -45,9 +45,9 @@ function Main() {
 
 			listResult = bmArray.map(data => data.bookmarkName); // 리스트 이름 배열로 변환
 			for (let i = 0; i < bmArray.length; i++) {
-				await axios({
+				axios({
 					method: 'get',
-					url: `http://localhost:8000/api/bookmarks/folder/${listResult[i]}`,
+					url: `http://kdt-sw2-busan-team01.elicecoding.com:5000/api/bookmarks/folder/${listResult[i]}`,
 					headers: {
 						Authorization: `Bearer ${token}`,
 					},
@@ -57,9 +57,6 @@ function Main() {
 					})
 					.catch(err => console.log(err));
 			}
-
-			console.log(listResult);
-			console.log(bookmarkArray);
 		}
 
 		getInfomation();
@@ -87,7 +84,6 @@ function Main() {
 					return decodeArray;
 				});
 			}
-			console.log(decodeArray);
 		}, 1000);
 
 		setTimeout(() => {

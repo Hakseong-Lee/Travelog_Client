@@ -19,9 +19,12 @@ function ColorLog() {
 	useEffect(() => {
 		(async () => {
 			const token = localStorage.getItem('token');
-			const data = await axios.get('http://localhost:8000/api/posts/user', {
-				headers: { Authorization: `Bearer ${token}` },
-			});
+			const data = await axios.get(
+				'http://kdt-sw2-busan-team01.elicecoding.com:5000/api/posts/user',
+				{
+					headers: { Authorization: `Bearer ${token}` },
+				},
+			);
 			setGetData(data.data);
 		})();
 	}, []);

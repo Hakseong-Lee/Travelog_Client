@@ -108,7 +108,7 @@ function Signup() {
 				const data = { nickname: name, email, password, age: ageData };
 				const result = await axios({
 					method: 'post',
-					url: 'http://localhost:8000/api/users/register',
+					url: 'http://kdt-sw2-busan-team01.elicecoding.com:5000/api/users/register',
 					data: data,
 				});
 				//로그인 성공시 토큰을 로컬 스토리지에 저장

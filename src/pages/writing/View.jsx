@@ -175,11 +175,13 @@ function View() {
 	};
 	const getWritingData = async () => {
 		try {
-			await axios.get(`http://localhost:8000/api/posts/user/${params}`, config).then(res => {
-				setWriting(res.data);
-				setBoard(JSON.parse(res.data.markedData));
-				setTag(JSON.parse(res.data.tag));
-			});
+			await axios
+				.get(`http://kdt-sw2-busan-team01.elicecoding.com:5000/api/posts/user/${params}`, config)
+				.then(res => {
+					setWriting(res.data);
+					setBoard(JSON.parse(res.data.markedData));
+					setTag(JSON.parse(res.data.tag));
+				});
 		} catch (err) {
 			console.log(err);
 		}

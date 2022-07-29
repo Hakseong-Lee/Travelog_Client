@@ -18,27 +18,27 @@ import BookmarkInfoDetail from './BookmarkInfoDetail';
 
 function BookmarkDetail(props) {
 	const [bookmark, setBookmark] = useRecoilState(bookmarkState);
-	const text = useRecoilValue(textState);
-	const currentList = useRecoilValue(currentListState);
 	const bmList = useRecoilValue(bookmarkListState);
 	const listNumber = useRecoilValue(listNumberState);
 	const [bookmarkSet, setBookmarkSet] = useRecoilState(bookmarkSetState);
-	const setViewDetail = useSetRecoilState(viewDetailState);
+	const [viewDetail, setViewDetail] = useRecoilState(viewDetailState);
+	const [text, setText] = useRecoilState(textState);
+	const currentList = useRecoilValue(currentListState);
+
+	useEffect(() => {
+		let newArray = makeBookmark(bookmark, text, bmList, listNumber);
+		setBookmarkSet(newArray);
+	}, [bookmark]);
 
 	let navigate = useNavigate();
-	const token = localStorage.getItem('token');
 
 	useEffect(() => {}, [listNumber]);
 
 	async function sendToWriting() {
-		let newArray = makeBookmark(bookmark, text, bmList, listNumber);
-		setBookmarkSet(newArray);
-		console.log(bookmarkSet);
-
 		const token = localStorage.getItem('token');
 		await axios({
 			method: 'post',
-			url: 'http://localhost:8000/api/bookmarks/registers',
+			url: 'http://kdt-sw2-busan-team01.elicecoding.com:5000/api/bookmarks/registers',
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
@@ -56,11 +56,11 @@ function BookmarkDetail(props) {
 		<DetailPageStyle>
 			<div className="folder">
 				<MdStars color="#ffb877" id="btnStar" size="32" />
-				{bmList[props.getNumber]}
-				<MdArrowBackIos className="backBtn" onClick={() => setViewDetail(true)} />
+				<p className="detailPageTitleName">{bmList[props.getNumber]}</p>
+				<MdArrowBackIos className="backBtn" onClick={() => setViewDetail(!viewDetail)} />
 			</div>
 			<div className="content">
-				<BookmarkInfoDetail />
+				{currentList == props.getNumber && <BookmarkInfoDetail getNumber={props.getNumber} />}
 			</div>
 			<button className="redirectTowrite" onClick={sendToWriting}>
 				글쓰기
@@ -83,16 +83,19 @@ const DetailPageStyle = styled.div`
 		text-align: center;
 		background-color: white;
 		border-radius: 0.5rem;
+		border: 1px solid rgb(219, 219, 219);
 	}
 	.content {
-		width: 18rem;
-		height: 70vh;
+		width: 23rem;
+		height: 67vh;
 		margin: 1rem 0;
 		text-align: center;
 		overflow: scroll;
 		overflow-y: auto;
 		overflow-x: hidden;
 		background-color: white;
+		border-radius: 0.25rem;
+		border: 1px solid rgb(219, 219, 219);
 		&::-webkit-scrollbar {
 			width: 4px;
 		}
@@ -110,9 +113,16 @@ const DetailPageStyle = styled.div`
 		cursor: pointer;
 	}
 
+	.detailPageTitleName {
+		background-color: transparent;
+		align-self: center;
+	}
+
 	.bookmarkBox {
 		margin-left: 1.3rem;
 		font-size: 1rem;
+		min-height: 10rem;
+		border: 1px solid rgb(219, 219, 219);
 	}
 
 	.infoBox {

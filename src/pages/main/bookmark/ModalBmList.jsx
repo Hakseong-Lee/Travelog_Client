@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import makeBookmark from '../../../function/makeBookmark';
 import { MdStars } from 'react-icons/md';
 import { useRecoilValue, useRecoilState } from 'recoil';
@@ -18,19 +18,17 @@ function ModalBmList() {
 	const [bookmarkSet, setBookmarkSet] = useRecoilState(bookmarkSetState);
 	const [currentList, setCurrentList] = useRecoilState(currentListState);
 
+	useState(() => {}, [listNumber]);
+
 	function handleListColor(e) {
 		const id = e.target.id;
 		setListNumber(e.target.id);
-		console.log(listNumber);
+
 		let newArray = makeBookmark(bookmark, text, bmList, listNumber);
 
 		setBookmarkSet(newArray);
-		console.log(bookmarkSet);
-		console.log(currentList);
 
-		currentList.includes(id)
-			? setCurrentList(currentList.filter(number => number != id))
-			: setCurrentList([...currentList, id]);
+		currentList.includes(id) ? setCurrentList('') : setCurrentList(id);
 	}
 
 	return (

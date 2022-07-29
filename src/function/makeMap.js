@@ -33,21 +33,26 @@ export default function makeMap() {
 					zIndex: 1,
 					removable: true,
 				});
+
+				bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
 				kakao.maps.event.addListener(marker, 'click', function () {
 					infowindow.setContent(overlayContents(data[i]));
 					infowindow.open(kakaoMap, marker);
 				});
-				bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-				marker.setMap(kakaoMap);
+				kakao.maps.event.addListener(kakaoMap, 'zoom_changed', function () {
+					if (kakaoMap.getLevel() > 8) {
+						infowindow.close();
+						marker.setMap(null);
+					}
+				});
 			}
 
 			function overlayContents(place) {
 				return `
           <img src='https://elice-redirect-manager.azurewebsites.net/_next/static/media/elice_banner.077d9964.png' 
-          style='float:left; border: 1px; width: 5rem; height: 5rem; margin: 3rem 1rem 0 1rem;'/>
+          style='float:left; width: 5rem; height: 5rem; margin: 3rem 1rem 0 1rem;'/>
           <div class='customOverlay' style='display:flex; width: 10rem; flex-flow:column;'>
           </label>
-              
               <div style='color: blue;'>${
 								place.place_name ? place.place_name : '장소 이름이 없습니다.'
 							}</div>

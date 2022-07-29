@@ -14,7 +14,9 @@ function Companion() {
 		(async () => {
 			try {
 				const type = 'together';
-				const data = await axios.get(`http://localhost:8000/api/posts/${type}`);
+				const data = await axios.get(
+					`http://kdt-sw2-busan-team01.elicecoding.com:5000/api/posts/${type}`,
+				);
 				setTogether(data.data);
 			} catch (e) {
 				console.error(e);

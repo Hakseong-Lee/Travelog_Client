@@ -27,7 +27,6 @@ function PlaceInfo() {
 			setBookmark([...bookmark, targetObj]);
 		} else if (bookmark.some(data => data.id == id)) {
 			setBookmark(bookmark.filter(data => data.id != id));
-			console.log(bookmark);
 		}
 	}
 

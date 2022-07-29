@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { BsThreeDots } from 'react-icons/bs';
 import EditModal from './EditModal';
@@ -8,9 +8,10 @@ import { listNumberState } from '../../../recoil/Atom';
 function EditBookmark(props) {
 	const [listNumber, setListNumber] = useRecoilState(listNumberState);
 	const [select, setSelect] = useState([]);
+	const [isClose, setIsClose] = useState(false);
 	function editFolder() {
+		setIsClose(!isClose);
 		setListNumber(props.i);
-		console.log(props.i);
 		select.includes(listNumber)
 			? setSelect(select.filter(button => button !== listNumber))
 			: setSelect(select => [...select, listNumber]);
@@ -18,7 +19,7 @@ function EditBookmark(props) {
 	return (
 		<EditBtnStyle>
 			<BsThreeDots className="editBtn" i={props.i} onClick={editFolder} />
-			{listNumber === props.i && <EditModal />}
+			{listNumber === props.i && isClose ? <EditModal setIsClose={setIsClose} i={props.i} /> : null}
 		</EditBtnStyle>
 	);
 }

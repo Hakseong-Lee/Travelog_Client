@@ -21,7 +21,7 @@ function TravelPost({ title, username, profileImg, cateCity, img, markedData, id
 	}, [markedData]);
 
 	const clickHandler = () => {
-		navigate(`/views/${id}`);
+		navigate(`/view/${id}`);
 	};
 
 	return (
@@ -103,6 +103,7 @@ const RouteContainer = styled.div`
 	width: 29rem;
 	height: 10rem;
 	overflow-x: auto;
+	overflow-y:clip;
 	position: relative;
 	top: -16rem;
 	left: 12rem;

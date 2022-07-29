@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { MdStars } from 'react-icons/md';
 import { BsPlusCircle } from 'react-icons/bs';
@@ -7,39 +7,42 @@ import {
 	allBookmarkState,
 	bookmarkListState,
 	bookmarkState,
-	listNumberState,
+	currentListState,
 	viewDetailState,
 } from '../../../recoil/Atom';
 import EditBookmark from './EditBookmark';
 
 function BookmarkList(props) {
-	const setListNumber = useSetRecoilState(listNumberState);
-	const setViewDetail = useSetRecoilState(viewDetailState);
-	const setBookmark = useSetRecoilState(bookmarkState);
+	const [viewDetail, setViewDetail] = useRecoilState(viewDetailState);
 	const allBookmark = useRecoilValue(allBookmarkState);
+	const [bookmark, setBookmark] = useRecoilState(bookmarkState);
 	const [bmList, setBmList] = useRecoilState(bookmarkListState);
+	const [currentList, setCurrentList] = useRecoilState(currentListState);
 	const [edit, setEdit] = useState(false);
-
 	const inputRef = useRef();
 	const hiddenDivRef = useRef();
 	const btnRef = useRef();
 
+	useEffect(() => {}, [currentList]);
+
 	function addFolder() {
-		console.log(hiddenDivRef.current);
 		hiddenDivRef.current.style.display = 'flex';
-		// inputRef.current.value;
 	}
 
 	function viewMore(e) {
-		setBookmark(allBookmark[e.target.id]);
-		setListNumber(e.target.id);
 		props.setGetNumber(e.target.id);
-		console.log(props.getNumber);
-		setTimeout(() => {
-			setViewDetail(false);
-		}, 200);
+		setCurrentList(e.target.id);
+		// if (allBookmark[e.target.id]) {
+		// 	let serverArray = JSON.parse(JSON.stringify(allBookmark[e.target.id]));
+		// 	// 서버의 배열을 가져와서 현재 배열에 합치고 중복 제거
+		// 	let sum = [...serverArray, ...bookmark];
+		// 	let result = sum.filter(
+		// 		(arr, index, callback) => index === callback.findIndex(data => data.id === arr.id),
+		// 	);
+		// setBookmark(result);
+		setViewDetail(!viewDetail);
+		// }
 	}
-
 	function handleSubmit() {
 		setBmList([...bmList, inputRef.current.value]);
 		hiddenDivRef.current.style.display = 'none';
@@ -55,9 +58,9 @@ function BookmarkList(props) {
 				{bmList.map((element, i) => (
 					<div key={i} className="folder">
 						<MdStars color="#ffb877" className="btnStar" size="32" />
-						<p id={i} onClick={viewMore}>
+						<button className="listName" id={i} onClick={viewMore}>
 							{element}
-						</p>
+						</button>
 						<EditBookmark i={i} setEdit={setEdit} edit={edit} />
 					</div>
 				))}
@@ -91,6 +94,15 @@ const BmListStyle = styled.div`
 		background-color: white;
 		border: 1px solid rgb(219, 219, 219);
 		border-radius: 0.25rem;
+	}
+
+	.listName {
+		position: absolute;
+		left: 40%;
+		border: none;
+		background-color: transparent;
+		font-size: 1rem;
+		cursor: pointer;
 	}
 
 	.folder {

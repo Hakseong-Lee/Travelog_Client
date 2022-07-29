@@ -22,7 +22,9 @@ function CommunityModal({ title, img, name, content, id, userId }) {
 	useEffect(() => {
 		(async () => {
 			try {
-				const data = await axios.get(`http://localhost:8000/api/comments/${postId}`);
+				const data = await axios.get(
+					`http://kdt-sw2-busan-team01.elicecoding.com:5000/api/comments/${postId}`,
+				);
 				setComments(data.data);
 			} catch (e) {
 				console.error(e);
@@ -38,7 +40,7 @@ function CommunityModal({ title, img, name, content, id, userId }) {
 	const commentButtonHandler = async () => {
 		setRandomId(new Date().getTime());
 		await axios.post(
-			`http://localhost:8000/api/comments/register/${postId}`,
+			`http://kdt-sw2-busan-team01.elicecoding.com:5000/api/comments/register/${postId}`,
 			{
 				content: commentInput,
 			},
@@ -48,14 +50,16 @@ function CommunityModal({ title, img, name, content, id, userId }) {
 				},
 			},
 		);
-		const data = await axios.get(`http://localhost:8000/api/comments/${postId}`);
+		const data = await axios.get(
+			`http://kdt-sw2-busan-team01.elicecoding.com:5000/api/comments/${postId}`,
+		);
 		setComments(data.data);
 		setCommentInput('');
 	};
 
 	const handleDelete = async () => {
 		try {
-			await axios.delete(`http://localhost:8000/api/posts/${postId}`, {
+			await axios.delete(`http://kdt-sw2-busan-team01.elicecoding.com:5000/api/posts/${postId}`, {
 				headers: {
 					Authorization: `Bearer ${token}`,
 				},

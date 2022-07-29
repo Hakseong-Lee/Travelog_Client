@@ -30,7 +30,6 @@ function BookmarkInfo() {
 	useEffect(() => {
 		let newArray = makeBookmark(bookmark, text, bmList, listNumber);
 		setBookmarkSet(newArray);
-		console.log(bookmarkSet);
 	}, [bookmark, text]);
 
 	function handleBookmark(e) {
@@ -40,8 +39,8 @@ function BookmarkInfo() {
 	}
 
 	function ActivateExtend(e) {
-		// 	setActive(true);
-		// 	setDetailInfo(placeInfo[e.target.id]);
+		setActive(true);
+		setDetailInfo(placeInfo[e.target.id]);
 	}
 
 	function makeBookmarkInfo(bookmark) {
@@ -50,11 +49,9 @@ function BookmarkInfo() {
 				<div key={Math.random()}>{handleStyle(data)}</div>
 				<div className="bookmarkInfoBox">
 					<button id={data.id} name={i} className="deleteBtn" onClick={handleBookmark}>
-						<MdOutlineClose />
+						x
 					</button>
-					<p onClick={ActivateExtend} className="bookmarkInfoName">
-						{data.place_name}
-					</p>
+					<p className="bookmarkInfoName">{data.place_name}</p>
 					<SetComments i={i} className="modalInput" comment={comment} setComment={setComment} />
 				</div>
 			</div>
@@ -86,12 +83,12 @@ const BookmarkInfoStyle = styled.div`
 	.bookmarkBox {
 		display: flex;
 		width: 18rem;
-		height: 6rem;
-		background-color: white;
+		background-color: #fafafa;
 		border: 1px solid rgb(219, 219, 219);
 		border-radius: 1rem;
 		margin: 0.5rem auto;
 		line-height: 1.5rem;
+		min-height: 8rem;
 	}
 
 	.placeInfoIcon {
@@ -110,10 +107,12 @@ const BookmarkInfoStyle = styled.div`
 		cursor: pointer;
 		font-size: 0.9rem;
 		margin: 0.2rem 0.3rem;
+		padding-left: 1rem;
+		width: 12rem;
 	}
 
 	.deleteBtn {
-		position: absolute;
+		float: right;
 		padding-top: 0.5rem;
 		right: 1rem;
 		font-size: 1rem;
@@ -123,9 +122,7 @@ const BookmarkInfoStyle = styled.div`
 		cursor: pointer;
 	}
 	.addComments {
-		position: absolute;
-		right: 0;
-		margin: 1rem 1.5rem 0 0;
+		margin: 1rem 1.5rem 0 2rem;
 		color: #edf7fa;
 		font-size: 0.75rem;
 	}

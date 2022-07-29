@@ -2,7 +2,7 @@ export default function makeBookmark(bookmark, text, bmList, listNumber) {
 	let newBookmark = JSON.parse(JSON.stringify(bookmark));
 	let newObj = newBookmark.map(element => {
 		let newObj = {
-			bookmarkMemo: null,
+			bookmarkMemo: element.bookmarkMemo !== '' ? element.bookmarkMemo : '',
 			placeName: element.place_name,
 			placeUrl: element.place_url,
 			categoryName: element.category_name,
