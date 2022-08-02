@@ -89,7 +89,7 @@ function Navbar() {
 		return () => {
 			window.removeEventListener('mousedown', handleModalOutside);
 		};
-	}, [profileIcon]);
+	}, []);
 
 	const handleModalOutside = event => {
 		if (isMenu && !modalMenu.current.contains(event.target)) {

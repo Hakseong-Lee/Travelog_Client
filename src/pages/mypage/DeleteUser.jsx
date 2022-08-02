@@ -92,11 +92,10 @@ const MenuLi = styled(NavLi)`
 		color: #ffffff;
 	}
 `;
-//회원 정보 변경창에 들어가기전 패스워드 확인
+//회원 정보 변경전 패스워드 확인
 function DeleteUser() {
 	const [password, setPassword] = useState('');
 	const token = window.localStorage.getItem('token');
-	//입력된 정보가 올바른 형식인지 검사
 
 	const handleSubmit = async e => {
 		e.preventDefault();
@@ -105,13 +104,13 @@ function DeleteUser() {
 		}
 
 		//회원가입 요청
-
 		try {
 			const userData = await axios
 				.get('http://kdt-sw2-busan-team01.elicecoding.com:5000/api/users/user', {
 					headers: { Authorization: `Bearer ${token}` },
 				})
 				.then(e => e.data);
+
 			await axios({
 				method: 'delete',
 				url: `http://kdt-sw2-busan-team01.elicecoding.com:5000/api/users/${userData.id}`,
@@ -123,7 +122,6 @@ function DeleteUser() {
 			localStorage.clear();
 			window.location.href = '/login';
 		} catch (err) {
-			console.error(err.stack);
 			alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
 		}
 	};

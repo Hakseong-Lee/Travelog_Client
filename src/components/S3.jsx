@@ -34,6 +34,7 @@ export function S3getFileURL(fileKey) {
 	const params = {
 		Bucket: bucketName,
 		Key: fileKey,
+		Expires: 86400,
 	};
 	const url = myBucket.getSignedUrl('getObject', params);
 	return url;

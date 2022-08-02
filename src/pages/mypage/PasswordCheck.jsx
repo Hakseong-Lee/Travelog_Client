@@ -57,12 +57,8 @@ const SignupButton = styled.button`
 function PasswordCheck() {
 	const [password, setPassword] = useState('');
 	const navigate = useNavigate();
-	//입력된 정보가 올바른 형식인지 검사
+
 	const token = window.localStorage.getItem('token');
-	// const config = {
-	//   headers: { Authorization: `Bearer ${token}` },
-	//   data: { paassword: password },
-	// }
 
 	const handleSubmit = async e => {
 		e.preventDefault();
@@ -84,7 +80,7 @@ function PasswordCheck() {
 				alert('비밀번호가 틀립니다');
 			}
 		} catch (err) {
-			//alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`)
+			alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
 		}
 	};
 

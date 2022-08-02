@@ -102,7 +102,6 @@ function ChangePassword() {
 	const token = window.localStorage.getItem('token');
 	const config = {
 		headers: { Authorization: `Bearer ${token}` },
-		//data: { currentPassword: '12341234' },
 	};
 
 	const handleSubmit = async e => {

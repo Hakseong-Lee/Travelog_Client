@@ -130,9 +130,9 @@ function EditProfile() {
 		let profileImg;
 		if (profileImage) {
 			S3Upload(profileImage);
-			profileImg = S3getFileURL(`upload/${fileKey}`);
+			profileImg = `https://elice-react-project-team1.s3.ap-northeast-2.amazonaws.com/upload/${fileKey}`;
 		} else {
-			profileImg = S3getFileURL(`upload/default.png`);
+			profileImg = `https://elice-react-project-team1.s3.ap-northeast-2.amazonaws.com/upload/default.png`;
 		}
 
 		let resultData = { userName, userNickname, phoneNumber, address, profileImg };

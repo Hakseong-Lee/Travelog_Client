@@ -103,7 +103,7 @@ const RouteContainer = styled.div`
 	width: 29rem;
 	height: 10rem;
 	overflow-x: auto;
-	overflow-y:clip;
+	overflow-y: clip;
 	position: relative;
 	top: -16rem;
 	left: 12rem;
