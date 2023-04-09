@@ -28,7 +28,17 @@ http://kdt-sw2-busan-team01.elicecoding.com/
 이용자들이 사이트를 이용할수록 이용자들이 참고할 수 있는 추천 코스들이 늘어납니다.
 
 ## 프로젝트 구성
+## 1. 와이어 프레임
 
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1c3f8861-2530-4e5f-997a-52566118b43e/Untitled.png)
+
+## 2. 페이지 구조도
+
+![main.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c698d1cd-119c-41f2-a244-40235c99a426/main.png)
+
+## 3. ERD
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ceaa20c2-ab7b-48aa-9533-6de42ae69902/Untitled.png)
 ### 사용 스택
 ---
 #### 프론트엔드
@@ -53,6 +63,53 @@ http://kdt-sw2-busan-team01.elicecoding.com/
 | [notion](https://www.notion.so/1-5c815b295a944821aab1cae6734128fc)   | 회의록, 기획안 등 문서화 작업 |
 | [discord](https://img.shields.io/badge/discord-%23009639.svg?style=for-the-badge&logo=discord&logoColor=white)  | 소통과 git hook 사용  |
 | [gathertown](https://img.shields.io/badge/gathertown-%23009639.svg?style=for-the-badge&logo=gathertown&logoColor=white)  | 온라인 회의 |
+
+# 시연 영상
+
+---
+
+[https://www.youtube.com/watch?v=sOdzQ7PTSSI](https://www.youtube.com/watch?v=sOdzQ7PTSSI)
+
+- 소셜 로그인
+
+![소셜로그인.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ec51b2d6-f90f-4901-a7e8-bddfeac67442/%EC%86%8C%EC%85%9C%EB%A1%9C%EA%B7%B8%EC%9D%B8.gif)
+
+- 글 쓰기
+    
+    ![글쓰기.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4cd8e248-c553-469b-a15d-6f5525da558a/%EA%B8%80%EC%93%B0%EA%B8%B0.gif)
+    
+- 글 상세 페이지
+    
+    ![글상세페이지.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d90ae4e2-efb6-423b-bc47-17e41ef25ead/%EA%B8%80%EC%83%81%EC%84%B8%ED%8E%98%EC%9D%B4%EC%A7%80.gif)
+    
+
+- 댓글, 좋아요 기능
+
+![댓글 좋아요.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/af0b9f2e-91cb-4419-8773-469ace3dedee/%EB%8C%93%EA%B8%80_%EC%A2%8B%EC%95%84%EC%9A%94.gif)
+
+- 컬러로그 기능
+    
+    ![컬러로그.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/62e5f13a-02fc-40fd-9497-68f9d9bb313c/%EC%BB%AC%EB%9F%AC%EB%A1%9C%EA%B7%B8.gif)
+    
+
+- 즐겨찾기
+    
+    ![즐겨찾기.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ad3930ff-da73-4dce-97db-36ca5e274a71/%EC%A6%90%EA%B2%A8%EC%B0%BE%EA%B8%B0.gif)
+    
+
+- 지도 검색
+    
+    ![지도검색.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f77fe453-889a-403f-a8ec-6d75ea86a3d3/%EC%A7%80%EB%8F%84%EA%B2%80%EC%83%89.gif)
+    
+
+- 마이페이지에서 작성글 확인
+    
+    ![마이페이지 작성글 확인.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/22eebc6f-64ef-4202-92af-ac0fc6aa18e3/%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80_%EC%9E%91%EC%84%B1%EA%B8%80_%ED%99%95%EC%9D%B8.gif)
+    
+
+- 회원 정보 변경
+    
+    ![회원정보변경.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7c869fe0-48af-4ea9-9eda-58fedad752f2/%ED%9A%8C%EC%9B%90%EC%A0%95%EB%B3%B4%EB%B3%80%EA%B2%BD.gif)
 
 ## 역할
 | 이름 | 역할 | 구현 기능 | 
